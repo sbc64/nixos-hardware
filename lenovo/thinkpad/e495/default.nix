@@ -6,6 +6,9 @@
     ../../../common/cpu/amd
   ];
 
+  # Neccesary to load amdgpu drivers
+  hardware.enableRedistributableFirmware = lib.mkDefault true; 
+
   # see https://github.com/NixOS/nixpkgs/issues/69289
   boot.kernelPackages = lib.mkIf (lib.versionOlder pkgs.linux.version "5.2") pkgs.linuxPackages_latest;
 
